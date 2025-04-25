@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Almeera Homestay</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1e3a8a',
+            accent: '#facc15'
+          },
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="font-poppins bg-white text-gray-800">
+  <nav class="bg-primary text-white px-6 py-4 flex justify-between items-center shadow-md sticky top-0 z-50">
+    <h1 class="text-lg font-bold">Almeera Homestay</h1>
+    <ul class="flex gap-4 text-sm font-semibold">
+      <li><a href="index.html" class="hover:text-accent">Utama</a></li>
+      <li><a href="galeri.html" class="hover:text-accent">Galeri</a></li>
+      <li><a href="promo.html" class="hover:text-accent">Promosi</a></li>
+      <li><a href="hubungi.html" class="hover:text-accent">Hubungi</a></li>
+    </ul>
+  </nav>  <header class="bg-gradient-to-br from-primary to-blue-900 text-white py-20 text-center px-4">
+    <h2 class="text-4xl font-extrabold">Selamat Datang ke Almeera Homestay</h2>
+    <p class="mt-4 text-lg"><span class="text-accent font-bold text-sm">Hot!</span> Penginapan selesa & lengkap untuk keluarga anda</p>
+    <div class="mt-6 flex flex-col md:flex-row justify-center gap-4">
+      <a href="https://wa.me/60123456789" target="_blank"
+         class="bg-accent text-black font-semibold px-6 py-3 rounded-full shadow hover:scale-105 transition">Tempah Sekarang</a>
+      <a href="galeri.html"
+         class="bg-white text-primary px-6 py-3 rounded-full font-semibold shadow hover:bg-gray-200 transition">Lihat Galeri</a>
+    </div>
+  </header>  <footer class="bg-primary text-white text-center p-6 mt-12">
+    <p>&copy; 2025 Almeera Homestay. Semua Hak Terpelihara.</p>
+  </footer>
+</body>
+</html>

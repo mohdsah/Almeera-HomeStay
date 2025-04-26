@@ -10,17 +10,22 @@
 <body class="font-poppins bg-white text-gray-800">
   <header class="bg-primary text-white text-center py-6">
     <h1 class="text-3xl font-bold">Panel Admin</h1>
-    <p class="text-sm mt-1">Senarai mesej dari pengunjung</p>
+    <p class="text-sm mt-1">Senarai Mesej Pelawat</p>
   </header>
 
   <main class="max-w-4xl mx-auto p-6">
     <div id="login-section" class="text-center mb-6">
-      <h2 class="text-lg font-semibold mb-2">Login Admin</h2>
+      <h2 class="text-lg font-semibold mb-2">Log Masuk Admin</h2>
       <input type="email" id="admin-email" placeholder="Emel" class="border px-3 py-2 rounded w-64 mb-2" /><br>
       <input type="password" id="admin-password" placeholder="Kata Laluan" class="border px-3 py-2 rounded w-64 mb-2" /><br>
       <button id="login-btn" class="bg-primary text-white px-6 py-2 rounded hover:bg-blue-800">Login</button>
       <p id="login-status" class="text-sm text-red-600 mt-2"></p>
     </div>
+
+    
+<div class="text-right my-4">
+  <button id="logout-btn" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">Log Keluar</button>
+</div>
 
     <div id="mesej-list" class="grid gap-4"></div>
   </main>
@@ -70,23 +75,32 @@
     }
 
     
-    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getAuth, signInWithEmelAndKata Laluan, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
     const auth = getAuth(app);
 
     loginBtn.addEventListener("click", async () => {
       try {
-        await signInWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
+        await signInWithEmelAndKata Laluan(auth, emailInput.value, passwordInput.value);
         loginStatus.textContent = "";
       } catch (err) {
-        loginStatus.textContent = "Login gagal. Sila semak maklumat.";
+        loginStatus.textContent = "Log masuk gagal. Sila semak maklumat anda.";
       }
     });
 
     onAuthStateChanged(auth, (user) => {
       if (user) {
         loginSection.style.display = "none";
-        mesejList.innerHTML = "<p class='text-sm text-gray-500 mb-4'>Muatkan mesej...</p>";
-        loadMesej();
+        mesejList.innerHTML = "<p class='text-sm text-gray-500 mb-4'>Memuatkan mesej...</p>";
+        
+    const logoutBtn = document.getElementById("logout-btn");
+    logoutBtn.addEventListener("click", async () => {
+      await auth.signOut();
+      alert("Anda telah log keluar.");
+      location.reload();
+    });
+
+    loadMesej();
+    
       } else {
         loginSection.style.display = "block";
         mesejList.innerHTML = "";

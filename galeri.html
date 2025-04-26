@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ms">
 <head>
@@ -5,22 +6,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Galeri - Almeera Homestay</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1e3a8a',
+            accent: '#facc15'
+          },
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body class="font-poppins bg-white text-gray-800">
-  <header class="bg-primary text-white text-center py-16">
-    <h1 class="text-4xl font-bold">Galeri Almeera Homestay</h1>
-    <p class="mt-2 text-lg">Lihat suasana penginapan kami</p>
-  </header>
+<nav class="bg-primary text-white px-6 py-4 flex justify-center shadow-md sticky top-0 z-50">
+  <ul class="flex gap-4 text-sm font-semibold">
+    <li><a href="index.html" class="hover:text-accent">Utama</a></li>
+    <li><a href="galeri.html" class="hover:text-accent">Galeri</a></li>
+    <li><a href="promosi.html" class="hover:text-accent">Promosi</a></li>
+    <li><a href="hubungi.html" class="hover:text-accent">Hubungi</a></li>
+    <li><a href="admin.html" class="hover:text-accent">Admin</a></li>
+  </ul>
+</nav>
 
-  <section class="py-12 px-6 max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-    <img src="images/ruang_tamu.jpg" class="w-full rounded-lg shadow" alt="Ruang Tamu">
-    <img src="images/bilik_tidur.jpg" class="w-full rounded-lg shadow" alt="Bilik Tidur">
-    <img src="images/dapur.jpg" class="w-full rounded-lg shadow" alt="Dapur">
-  </section>
+<header class="bg-primary text-white text-center py-16">
+  <h1 class="text-4xl font-bold">Galeri Homestay</h1>
+  <p class="mt-2 text-lg">Lihat suasana penginapan kami</p>
+</header>
+<section class="py-12 px-6 max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+  <img src="images/ruang_tamu.jpg" class="w-full rounded-lg shadow" alt="Ruang Tamu" />
+  <img src="images/bilik_tidur.jpg" class="w-full rounded-lg shadow" alt="Bilik Tidur" />
+  <img src="images/dapur.jpg" class="w-full rounded-lg shadow" alt="Dapur" />
+</section>
 
-  <footer class="bg-gradient-to-br from-primary to-blue-800 text-white text-center p-6 mt-12">
-    <p>&copy; 2025 Almeera Homestay. Semua Hak Terpelihara.</p>
-  </footer>
+<footer class="bg-gradient-to-br from-primary to-blue-800 text-white text-center p-6 mt-12">
+  <p>&copy; 2025 Almeera Homestay. Semua Hak Terpelihara.</p>
+</footer>
 </body>
 </html>

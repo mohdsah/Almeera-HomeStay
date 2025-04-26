@@ -21,8 +21,28 @@
     }
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      AOS.init({ once: true });
+    });
+  </script>
+
 </head>
-<body class="font-poppins bg-white text-gray-800">
+<body>
+
+<nav class="bg-primary text-white px-6 py-4 flex justify-center shadow-md sticky top-0 z-50">
+  <ul class="flex gap-4 text-sm font-semibold">
+    <li><a href="index.html" class="hover:text-accent">Utama</a></li>
+    <li><a href="promosi.html" class="hover:text-accent">Promosi</a></li>
+    <li><a href="galeri.html" class="hover:text-accent">Galeri</a></li>
+    <li><a href="hubungi.html" class="hover:text-accent">Hubungi</a></li>
+    <li><a href="admin.html" class="hover:text-accent">Admin</a></li>
+  </ul>
+</nav>
+ class="font-poppins bg-white text-gray-800">
 
 <header class="bg-primary text-white text-center py-10 shadow">
   <h1 class="text-3xl font-bold">Galeri Almeera Homestay</h1>
@@ -30,9 +50,9 @@
 </header>
 
 <section class="max-w-6xl mx-auto p-6 grid md:grid-cols-3 gap-6">
-  <img src="images/ruang_tamu.jpg" alt="Ruang Tamu" class="rounded shadow" />
-  <img src="images/bilik_tidur.jpg" alt="Bilik Tidur" class="rounded shadow" />
-  <img src="images/dapur.jpg" alt="Dapur" class="rounded shadow" />
+  <img data-aos="fade-up" src="images/ruang_tamu.jpg" alt="Ruang Tamu" class="rounded shadow" / class="w-full h-auto object-cover rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
+  <img data-aos="fade-up" src="images/bilik_tidur.jpg" alt="Bilik Tidur" class="rounded shadow" / class="w-full h-auto object-cover rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
+  <img data-aos="fade-up" src="images/dapur.jpg" alt="Dapur" class="rounded shadow" / class="w-full h-auto object-cover rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
 </section>
 
 <footer class="bg-gradient-to-br from-primary to-blue-800 text-white text-center p-6 mt-12">

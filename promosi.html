@@ -21,8 +21,28 @@
     }
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      AOS.init({ once: true });
+    });
+  </script>
+
 </head>
-<body class="font-poppins bg-white text-gray-800">
+<body>
+
+<nav class="bg-primary text-white px-6 py-4 flex justify-center shadow-md sticky top-0 z-50">
+  <ul class="flex gap-4 text-sm font-semibold">
+    <li><a href="index.html" class="hover:text-accent">Utama</a></li>
+    <li><a href="promosi.html" class="hover:text-accent">Promosi</a></li>
+    <li><a href="galeri.html" class="hover:text-accent">Galeri</a></li>
+    <li><a href="hubungi.html" class="hover:text-accent">Hubungi</a></li>
+    <li><a href="admin.html" class="hover:text-accent">Admin</a></li>
+  </ul>
+</nav>
+ class="font-poppins bg-white text-gray-800">
 
 <header class="bg-primary text-white text-center py-12 shadow">
   <h1 class="text-3xl font-bold">Promosi Menarik</h1>
@@ -30,17 +50,17 @@
 </header>
 
 <section class="py-12 px-6 max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
-  <div class="bg-white p-6 rounded shadow text-center border hover:shadow-lg transition">
+  <div data-aos="fade-up" class="bg-white p-6 rounded shadow text-center border hover:shadow-lg transition">
     <h2 class="text-xl font-bold text-primary mb-2">Pakej Keluarga</h2>
     <p class="text-sm text-gray-600 mb-4">RM150/malam</p>
     <p>3 bilik, WiFi, dapur lengkap, parking</p>
   </div>
-  <div class="bg-white p-6 rounded shadow text-center border hover:shadow-lg transition">
+  <div data-aos="fade-up" class="bg-white p-6 rounded shadow text-center border hover:shadow-lg transition">
     <h2 class="text-xl font-bold text-primary mb-2">Pakej Mesra</h2>
     <p class="text-sm text-gray-600 mb-4">RM200/malam</p>
     <p>4 bilik, Netflix, ruang tamu luas</p>
   </div>
-  <div class="bg-white p-6 rounded shadow text-center border hover:shadow-lg transition">
+  <div data-aos="fade-up" class="bg-white p-6 rounded shadow text-center border hover:shadow-lg transition">
     <h2 class="text-xl font-bold text-primary mb-2">Pakej Eksklusif</h2>
     <p class="text-sm text-gray-600 mb-4">RM250/malam</p>
     <p>5 bilik, sarapan, BBQ, pemandangan Kinabalu</p>

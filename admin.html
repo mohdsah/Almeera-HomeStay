@@ -21,8 +21,28 @@
     }
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      AOS.init({ once: true });
+    });
+  </script>
+
 </head>
-<body class="font-poppins bg-gray-100 text-gray-800">
+<body>
+
+<nav class="bg-primary text-white px-6 py-4 flex justify-center shadow-md sticky top-0 z-50">
+  <ul class="flex gap-4 text-sm font-semibold">
+    <li><a href="index.html" class="hover:text-accent">Utama</a></li>
+    <li><a href="promosi.html" class="hover:text-accent">Promosi</a></li>
+    <li><a href="galeri.html" class="hover:text-accent">Galeri</a></li>
+    <li><a href="hubungi.html" class="hover:text-accent">Hubungi</a></li>
+    <li><a href="admin.html" class="hover:text-accent">Admin</a></li>
+  </ul>
+</nav>
+ class="font-poppins bg-gray-100 text-gray-800">
 
 <header class="bg-primary text-white py-6 shadow text-center">
   <h1 class="text-3xl font-bold">Panel Admin - Almeera Homestay</h1>
@@ -39,7 +59,7 @@
   </div>
 
   <div id="admin-panel" class="hidden mt-8">
-    <div class="flex justify-between items-center mb-4">
+    <div data-aos="fade-up" class="flex justify-between items-center mb-4">
       <h3 class="text-xl font-bold text-primary">Senarai Mesej</h3>
       <button id="logout-btn" class="bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700">Log Keluar</button>
     </div>

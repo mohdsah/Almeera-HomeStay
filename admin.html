@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="ms">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin - Almeera Homestay</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Admin - Almeera Homestay
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
   <script>
-    tailwind.config = {
+   tailwind.config = {
       theme: {
         extend: {
           colors: {
@@ -20,59 +23,86 @@
       }
     }
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js">
+  </script>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
+   document.addEventListener("DOMContentLoaded", function () {
       AOS.init({ once: true });
     });
   </script>
-
-</head>
-<body>
-
-<nav class="bg-primary text-white px-6 py-4 flex justify-center shadow-md sticky top-0 z-50">
-  <ul class="flex gap-4 text-sm font-semibold">
-    <li><a href="index.html" class="hover:text-accent">Utama</a></li>
-    <li><a href="promosi.html" class="hover:text-accent">Promosi</a></li>
-    <li><a href="galeri.html" class="hover:text-accent">Galeri</a></li>
-    <li><a href="hubungi.html" class="hover:text-accent">Hubungi</a></li>
-    <li><a href="admin.html" class="hover:text-accent">Admin</a></li>
-  </ul>
-</nav>
- class="font-poppins bg-gray-100 text-gray-800">
-
-<header class="bg-primary text-white py-6 shadow text-center">
-  <h1 class="text-3xl font-bold">Panel Admin - Almeera Homestay</h1>
-  <p class="text-sm mt-1">Log masuk dan pantau mesej pengunjung</p>
-</header>
-
-<main class="max-w-3xl mx-auto p-6">
-  <div id="login-section" class="bg-white p-6 rounded shadow text-center">
-    <h2 class="text-lg font-semibold mb-4">Log Masuk Admin</h2>
-    <input type="email" id="admin-email" placeholder="Emel" class="border px-4 py-2 rounded w-full mb-3" />
-    <input type="password" id="admin-password" placeholder="Kata Laluan" class="border px-4 py-2 rounded w-full mb-4" />
-    <button id="login-btn" class="bg-primary text-white w-full py-2 rounded hover:bg-blue-800">Log Masuk</button>
-    <p id="login-status" class="text-sm text-red-600 mt-3"></p>
-  </div>
-
-  <div id="admin-panel" class="hidden mt-8">
-    <div data-aos="fade-up" class="flex justify-between items-center mb-4">
-      <h3 class="text-xl font-bold text-primary">Senarai Mesej</h3>
-      <button id="logout-btn" class="bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700">Log Keluar</button>
+ </head>
+ <body>
+  <nav class="bg-primary text-white px-6 py-4 flex justify-center shadow-md sticky top-0 z-50">
+   <ul class="flex gap-4 text-sm font-semibold">
+    <li>
+     <a class="hover:text-accent" href="index.html">
+      Utama
+     </a>
+    </li>
+    <li>
+     <a class="hover:text-accent" href="promosi.html">
+      Promosi
+     </a>
+    </li>
+    <li>
+     <a class="hover:text-accent" href="galeri.html">
+      Galeri
+     </a>
+    </li>
+    <li>
+     <a class="hover:text-accent" href="hubungi.html">
+      Hubungi
+     </a>
+    </li>
+    <li>
+     <a class="hover:text-accent" href="admin.html">
+      Admin
+     </a>
+    </li>
+   </ul>
+  </nav>
+  class="font-poppins bg-gray-100 text-gray-800"&gt;
+  <header class="bg-gradient-to-r from-primary to-blue-900 text-white py-8 shadow-lg text-center">
+   <h1 class="text-3xl font-bold">
+    Panel Admin - Almeera Homestay
+   </h1>
+   <p class="text-sm mt-1">
+    Log masuk dan pantau mesej pengunjung
+   </p>
+  </header>
+  <main class="max-w-3xl mx-auto p-6">
+   <div class="bg-white p-6 rounded shadow text-center" id="login-section">
+    <h2 class="text-lg font-semibold mb-4">
+     Log Masuk Admin
+    </h2>
+    <input class="border px-4 py-2 rounded w-full mb-3" id="admin-email" placeholder="Emel" type="email"/>
+    <input class="border px-4 py-2 rounded w-full mb-4" id="admin-password" placeholder="Kata Laluan" type="password"/>
+    <button class="bg-primary text-white w-full py-2 rounded hover:bg-blue-800" id="login-btn">
+     Log Masuk
+    </button>
+    <p class="text-sm text-red-600 mt-3" id="login-status">
+    </p>
+   </div>
+   <div class="hidden mt-8" id="admin-panel">
+    <div class="flex justify-between items-center mb-4" data-aos="fade-up">
+     <h3 class="text-xl font-bold text-primary">
+      Senarai Mesej
+     </h3>
+     <button class="bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700" id="logout-btn">
+      Log Keluar
+     </button>
     </div>
-    <div id="mesej-list" class="grid gap-4"></div>
-  </div>
-</main>
-
-<footer class="text-center text-sm text-gray-500 py-4">
-  &copy; 2025 Almeera Homestay. Semua Hak Terpelihara.
-</footer>
-
-<script type="module">
-  import {{ initializeApp }} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    <div class="grid gap-4" id="mesej-list">
+    </div>
+   </div>
+  </main>
+  <footer class="text-center text-sm text-gray-500 py-4">
+   © 2025 Almeera Homestay. Semua Hak Terpelihara.
+  </footer>
+  <script type="module">
+   import {{ initializeApp }} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import {{ getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut }} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
   import {{ getFirestore, collection, getDocs }} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
@@ -118,7 +148,13 @@
       adminPanel.classList.remove("hidden");
       const querySnapshot = await getDocs(collection(db, "mesej"));
       mesejList.innerHTML = "";
-      querySnapshot.forEach(doc => {{
+      querySnapshot.forEach(doc => {
+        totalCount++;
+        const d = doc.data().tarikh?.seconds * 1000;
+        const msgDate = new Date(d);
+        if (msgDate.toDateString() === new Date().toDateString()) {
+          todayCount++;
+        }{
         const data = doc.data();
         const card = document.createElement("div");
         card.className = "bg-white p-4 rounded shadow";
@@ -128,13 +164,14 @@
           <p class='text-gray-800 text-sm'>${{data.mesej}}</p>
         `;
         mesejList.appendChild(card);
+        document.getElementById('total-count').textContent = totalCount;
+        document.getElementById('today-count').textContent = todayCount;
       }});
     }} else {{
       loginSection.classList.remove("hidden");
       adminPanel.classList.add("hidden");
     }}
   }});
-</script>
-
-</body>
+  </script>
+ </body>
 </html>

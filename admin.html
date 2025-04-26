@@ -3,110 +3,118 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Panel - Almeera Homestay</title>
+  <title>Admin - Almeera Homestay</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1e3a8a',
+            accent: '#facc15'
+          },
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
-<body class="font-poppins bg-white text-gray-800">
-  <header class="bg-primary text-white text-center py-6">
-    <h1 class="text-3xl font-bold">Panel Admin</h1>
-    <p class="text-sm mt-1">Senarai Mesej Pelawat</p>
-  </header>
+<body class="font-poppins bg-gray-100 text-gray-800">
 
-  <main class="max-w-4xl mx-auto p-6">
-    <div id="login-section" class="text-center mb-6">
-      <h2 class="text-lg font-semibold mb-2">Log Masuk Admin</h2>
-      <input type="email" id="admin-email" placeholder="Emel" class="border px-3 py-2 rounded w-64 mb-2" /><br>
-      <input type="password" id="admin-password" placeholder="Kata Laluan" class="border px-3 py-2 rounded w-64 mb-2" /><br>
-      <button id="login-btn" class="bg-primary text-white px-6 py-2 rounded hover:bg-blue-800">Login</button>
-      <p id="login-status" class="text-sm text-red-600 mt-2"></p>
+<header class="bg-primary text-white py-6 shadow text-center">
+  <h1 class="text-3xl font-bold">Panel Admin - Almeera Homestay</h1>
+  <p class="text-sm mt-1">Log masuk dan pantau mesej pengunjung</p>
+</header>
+
+<main class="max-w-3xl mx-auto p-6">
+  <div id="login-section" class="bg-white p-6 rounded shadow text-center">
+    <h2 class="text-lg font-semibold mb-4">Log Masuk Admin</h2>
+    <input type="email" id="admin-email" placeholder="Emel" class="border px-4 py-2 rounded w-full mb-3" />
+    <input type="password" id="admin-password" placeholder="Kata Laluan" class="border px-4 py-2 rounded w-full mb-4" />
+    <button id="login-btn" class="bg-primary text-white w-full py-2 rounded hover:bg-blue-800">Log Masuk</button>
+    <p id="login-status" class="text-sm text-red-600 mt-3"></p>
+  </div>
+
+  <div id="admin-panel" class="hidden mt-8">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-xl font-bold text-primary">Senarai Mesej</h3>
+      <button id="logout-btn" class="bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700">Log Keluar</button>
     </div>
-
-    
-<div class="text-right my-4">
-  <button id="logout-btn" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">Log Keluar</button>
-</div>
-
     <div id="mesej-list" class="grid gap-4"></div>
-  </main>
+  </div>
+</main>
 
-  <footer class="bg-gradient-to-br from-primary to-blue-800 text-white text-center p-4 mt-12">
-    <p>&copy; 2025 Almeera Homestay. Semua Hak Terpelihara.</p>
-  </footer>
+<footer class="text-center text-sm text-gray-500 py-4">
+  &copy; 2025 Almeera Homestay. Semua Hak Terpelihara.
+</footer>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+<script type="module">
+  import {{ initializeApp }} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import {{ getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut }} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import {{ getFirestore, collection, getDocs }} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyDsmm-b0yyTok6ypW2T3V9qzkfXrAor2Zw",
-      authDomain: "amisdahkundasang.firebaseapp.com",
-      projectId: "amisdahkundasang",
-      storageBucket: "amisdahkundasang.firebasestorage.app",
-      messagingSenderId: "879008701274",
-      appId: "1:879008701274:web:9dbb1baf5fe3f77b9cb163"
-    };
+  const firebaseConfig = {{
+    apiKey: "AIzaSyDsmm-b0yyTok6ypW2T3V9qzkfXrAor2Zw",
+    authDomain: "amisdahkundasang.firebaseapp.com",
+    projectId: "amisdahkundasang",
+    storageBucket: "amisdahkundasang.firebasestorage.app",
+    messagingSenderId: "879008701274",
+    appId: "1:879008701274:web:9dbb1baf5fe3f77b9cb163"
+  }};
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
 
-    
-    const loginBtn = document.getElementById("login-btn");
-    const emailInput = document.getElementById("admin-email");
-    const passwordInput = document.getElementById("admin-password");
-    const loginSection = document.getElementById("login-section");
-    const mesejList = document.getElementById("mesej-list");
-    const loginStatus = document.getElementById("login-status");
+  const loginSection = document.getElementById("login-section");
+  const adminPanel = document.getElementById("admin-panel");
+  const loginBtn = document.getElementById("login-btn");
+  const logoutBtn = document.getElementById("logout-btn");
+  const loginStatus = document.getElementById("login-status");
+  const mesejList = document.getElementById("mesej-list");
 
+  loginBtn.addEventListener("click", async () => {{
+    const email = document.getElementById("admin-email").value;
+    const password = document.getElementById("admin-password").value;
+    try {{
+      await signInWithEmailAndPassword(auth, email, password);
+      loginStatus.textContent = "";
+    }} catch (err) {{
+      loginStatus.textContent = "Log masuk gagal. Sila semak maklumat anda.";
+    }}
+  }});
 
-    async function loadMesej() {
+  logoutBtn.addEventListener("click", async () => {{
+    await signOut(auth);
+    location.reload();
+  }});
+
+  onAuthStateChanged(auth, async (user) => {{
+    if (user) {{
+      loginSection.classList.add("hidden");
+      adminPanel.classList.remove("hidden");
       const querySnapshot = await getDocs(collection(db, "mesej"));
-      querySnapshot.forEach((doc) => {
+      mesejList.innerHTML = "";
+      querySnapshot.forEach(doc => {{
         const data = doc.data();
         const card = document.createElement("div");
-        card.className = "border rounded p-4 shadow bg-gray-50";
+        card.className = "bg-white p-4 rounded shadow";
         card.innerHTML = `
-          <h2 class="font-bold text-primary text-lg">${data.nama}</h2>
-          <p class="text-sm text-gray-600">${data.emel}</p>
-          <p class="mt-2 text-gray-800">${data.mesej}</p>
+          <h4 class='text-primary font-bold'>${{data.nama}}</h4>
+          <p class='text-sm text-gray-600 mb-1'>${{data.emel}}</p>
+          <p class='text-gray-800 text-sm'>${{data.mesej}}</p>
         `;
         mesejList.appendChild(card);
-      });
-    }
+      }});
+    }} else {{
+      loginSection.classList.remove("hidden");
+      adminPanel.classList.add("hidden");
+    }}
+  }});
+</script>
 
-    
-    import { getAuth, signInWithEmelAndKata Laluan, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-    const auth = getAuth(app);
-
-    loginBtn.addEventListener("click", async () => {
-      try {
-        await signInWithEmelAndKata Laluan(auth, emailInput.value, passwordInput.value);
-        loginStatus.textContent = "";
-      } catch (err) {
-        loginStatus.textContent = "Log masuk gagal. Sila semak maklumat anda.";
-      }
-    });
-
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        loginSection.style.display = "none";
-        mesejList.innerHTML = "<p class='text-sm text-gray-500 mb-4'>Memuatkan mesej...</p>";
-        
-    const logoutBtn = document.getElementById("logout-btn");
-    logoutBtn.addEventListener("click", async () => {
-      await auth.signOut();
-      alert("Anda telah log keluar.");
-      location.reload();
-    });
-
-    loadMesej();
-    
-      } else {
-        loginSection.style.display = "block";
-        mesejList.innerHTML = "";
-      }
-    });
-
-  </script>
 </body>
 </html>

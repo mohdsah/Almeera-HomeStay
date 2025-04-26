@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel - Almeera Homestay</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="font-poppins bg-white text-gray-800">
+  <header class="bg-primary text-white text-center py-6">
+    <h1 class="text-3xl font-bold">Panel Admin</h1>
+    <p class="text-sm mt-1">Senarai mesej dari pengunjung</p>
+  </header>
+
+  <main class="max-w-4xl mx-auto p-6">
+    <div id="login-section" class="text-center mb-6">
+      <h2 class="text-lg font-semibold mb-2">Login Admin</h2>
+      <input type="email" id="admin-email" placeholder="Emel" class="border px-3 py-2 rounded w-64 mb-2" /><br>
+      <input type="password" id="admin-password" placeholder="Kata Laluan" class="border px-3 py-2 rounded w-64 mb-2" /><br>
+      <button id="login-btn" class="bg-primary text-white px-6 py-2 rounded hover:bg-blue-800">Login</button>
+      <p id="login-status" class="text-sm text-red-600 mt-2"></p>
+    </div>
+
+    <div id="mesej-list" class="grid gap-4"></div>
+  </main>
+
+  <footer class="bg-gradient-to-br from-primary to-blue-800 text-white text-center p-4 mt-12">
+    <p>&copy; 2025 Almeera Homestay. Semua Hak Terpelihara.</p>
+  </footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDsmm-b0yyTok6ypW2T3V9qzkfXrAor2Zw",
+      authDomain: "amisdahkundasang.firebaseapp.com",
+      projectId: "amisdahkundasang",
+      storageBucket: "amisdahkundasang.firebasestorage.app",
+      messagingSenderId: "879008701274",
+      appId: "1:879008701274:web:9dbb1baf5fe3f77b9cb163"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    
+    const loginBtn = document.getElementById("login-btn");
+    const emailInput = document.getElementById("admin-email");
+    const passwordInput = document.getElementById("admin-password");
+    const loginSection = document.getElementById("login-section");
+    const mesejList = document.getElementById("mesej-list");
+    const loginStatus = document.getElementById("login-status");
+
+
+    async function loadMesej() {
+      const querySnapshot = await getDocs(collection(db, "mesej"));
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const card = document.createElement("div");
+        card.className = "border rounded p-4 shadow bg-gray-50";
+        card.innerHTML = `
+          <h2 class="font-bold text-primary text-lg">${data.nama}</h2>
+          <p class="text-sm text-gray-600">${data.emel}</p>
+          <p class="mt-2 text-gray-800">${data.mesej}</p>
+        `;
+        mesejList.appendChild(card);
+      });
+    }
+
+    
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    const auth = getAuth(app);
+
+    loginBtn.addEventListener("click", async () => {
+      try {
+        await signInWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
+        loginStatus.textContent = "";
+      } catch (err) {
+        loginStatus.textContent = "Login gagal. Sila semak maklumat.";
+      }
+    });
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        loginSection.style.display = "none";
+        mesejList.innerHTML = "<p class='text-sm text-gray-500 mb-4'>Muatkan mesej...</p>";
+        loadMesej();
+      } else {
+        loginSection.style.display = "block";
+        mesejList.innerHTML = "";
+      }
+    });
+
+  </script>
+</body>
+</html>
